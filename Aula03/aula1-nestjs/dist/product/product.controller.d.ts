@@ -4,9 +4,19 @@ import { UpdateProductDto } from './dto/update-product.dto';
 export declare class ProductController {
     private readonly productService;
     constructor(productService: ProductService);
-    create(createProductDto: CreateProductDto): string;
-    findAll(): import(".prisma/client").PrismaPromise<import(".prisma/client").Product[]>;
-    findOne(id: string): import(".prisma/client").Prisma.Prisma__ProductClient<import(".prisma/client").Product>;
-    update(id: string, updateProductDto: UpdateProductDto): string;
-    remove(id: string): string;
+    create(createProductDto: CreateProductDto): import(".prisma/client").Prisma.Prisma__ProductClient<import(".prisma/client").Product & {
+        images: import(".prisma/client").Image[];
+    }>;
+    findAll(): import(".prisma/client").PrismaPromise<(import(".prisma/client").Product & {
+        images: import(".prisma/client").Image[];
+    })[]>;
+    findOne(id: string): import(".prisma/client").Prisma.Prisma__ProductClient<import(".prisma/client").Product & {
+        images: import(".prisma/client").Image[];
+    }>;
+    update(id: string, updateProductDto: UpdateProductDto): import(".prisma/client").Prisma.Prisma__ProductClient<import(".prisma/client").Product & {
+        images: import(".prisma/client").Image[];
+    }>;
+    remove(id: string): import(".prisma/client").Prisma.Prisma__ProductClient<import(".prisma/client").Product & {
+        images: import(".prisma/client").Image[];
+    }>;
 }

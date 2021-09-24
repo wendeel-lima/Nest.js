@@ -16,22 +16,45 @@ let ProductService = class ProductService {
     constructor(prisma) {
         this.prisma = prisma;
     }
-    create(createProductDto) {
-        return 'This action adds a new product';
+    create(data) {
+        return this.prisma.product.create({
+            data,
+            include: {
+                images: true,
+            },
+        });
     }
     findAll() {
-        return this.prisma.product.findMany();
+        return this.prisma.product.findMany({
+            include: {
+                images: true,
+            },
+        });
     }
     findOne(id) {
         return this.prisma.product.findUnique({
             where: { id },
+            include: {
+                images: true,
+            },
         });
     }
-    update(id, updateProductDto) {
-        return `This action updates a #${id} product`;
+    update(id, data) {
+        return this.prisma.product.update({
+            where: { id },
+            data,
+            include: {
+                images: true,
+            },
+        });
     }
     remove(id) {
-        return `This action removes a #${id} product`;
+        return this.prisma.product.delete({
+            where: { id },
+            include: {
+                images: true,
+            },
+        });
     }
 };
 ProductService = __decorate([
